@@ -1,31 +1,14 @@
-// Variables, Constants and Assignment
+// Arithmetic Operators and BODMAS
+// Operators are predifined functions for the language defined in a JIT compiler.
+// There is an order of precendence to which operators are executed. 
 
-// Computer also has short term memory, so we need to assign values to the data to pull it up when needed
+let result = 5 + 2 * 3; // because multiplication operator has higher precendence, it is executed first. Here, the result is 9. 
 
-// When you use 'var'/'let' you're creating a box and identifying what's in that box
+// BODMAS =  Brackets -> (), pOwers -> function call, DM -> Division and Multiplication, AS -> Addition and Substriction. When no precendence, JS goes left to right
 
-var name = "Lawrence"; // don't make it a string, cuz it's symbol, a memory address.
+result = Math.pow(2, 4) / 2 + 1 - 5 + (2 * 12); // in Math.pow() -> first we pass base number, later exponent. result is 28.
+// Two types of divison '/' and '%' - reminder operator, modulus divison. Gives reminder of division.
+result = 9 % 5; // 4
+result = 10 % 2; // 2
 
-// when you call variable name in the console, it returns 'Lawrence' as expected.
-// While naming variables don't start with numbers, capital letters or special charecters and never put in spaces, or define it as a string.
-// Being a variable means that it changes and you can assign new value.
-
-name = "Luka";
-
-name ="Anthony";
-
-var blank; // Blank variables return null/undifined to say it's waiting for the value to be assigned.
-
-blank = "new value"; // This is how you assign value to the blank variable.
-
-// JS is loosely typed language. Which means programmer can easily chance type of the variable from string to number, boolean, etc.
-
-blank = [];
-
-// Another type of variable is constant, which means variable always stays the same.
-
-const lastName = "turton"; // Can't create const without adding a value first. 
-
-// lastName = 'Chochua'; This returns a TypeError: Assignment to constant variable.
-
-console.log(lastName);
+console.log(result);
