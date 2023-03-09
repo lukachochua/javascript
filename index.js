@@ -1,28 +1,31 @@
-// primitive data types
+// Variables, Constants and Assignment
 
-// STRINGS
-"hello";
-'hello';
-"he said \"hello\"";
-'hello world "yup"';
-"hello world 'yup";
+// Computer also has short term memory, so we need to assign values to the data to pull it up when needed
 
-//NUMBERS
-// Two types of numbers  - integers and floats
-//int
-1;
-100;
-200;
-//float
-1.1;
-100.256;
+// When you use 'var'/'let' you're creating a box and identifying what's in that box
 
-// BOOLEANS
-// float or sink, positive or negative, 0 or 1, on or off
-true;
-false;
+var name = "Lawrence"; // don't make it a string, cuz it's symbol, a memory address.
 
-// OTHER PRIMITIVE TYPES - still a value that let's you know there's nothing in it
-null - 'no value assigned';
-undefined - 'same thing';
-NaN - 'Not A Number';
+// when you call variable name in the console, it returns 'Lawrence' as expected.
+// While naming variables don't start with numbers, capital letters or special charecters and never put in spaces, or define it as a string.
+// Being a variable means that it changes and you can assign new value.
+
+name = "Luka";
+
+name ="Anthony";
+
+var blank; // Blank variables return null/undifined to say it's waiting for the value to be assigned.
+
+blank = "new value"; // This is how you assign value to the blank variable.
+
+// JS is loosely typed language. Which means programmer can easily chance type of the variable from string to number, boolean, etc.
+
+blank = [];
+
+// Another type of variable is constant, which means variable always stays the same.
+
+const lastName = "turton"; // Can't create const without adding a value first. 
+
+// lastName = 'Chochua'; This returns a TypeError: Assignment to constant variable.
+
+console.log(lastName);
