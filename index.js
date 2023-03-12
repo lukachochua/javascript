@@ -1,14 +1,21 @@
-// Code Editors and Debugging
+// Functions and Subroutines.
 
-// One needs seperate script file to seperate his/her concerns. 
+// Functions are set of prewritten instructions for a computer to execute when they're called from the memory
+// Functions define subroutines, like routines inside humans minds. Programmer names it, gives it set of instructions and calls it when needed.
+// functions can have parameters, that are variables, that can have values asssigned to them when we execute instructions. 
+// Curly braces define functions body. Functions are called with return function.
 
-console.log("Hello World"); // You can log out string, number, boolean, primitive types like null and undefined
-console.log(200);
-console.log(true);
-console.log(undefined);
+function makeCoffe(sugar, milk)
+{
+    let instructions = 'Boil Water,'; // These variables inside functions are accessible only in the scope of the function.
+    instructions += " pour into cup,";
+    instructions += " add coffee granules,";
+    instructions += " add " + sugar + " spoons of sugar,";
+    instructions += " add " + milk + "% milk.";
+    
+    return instructions;
+} // Make coffee as a function example.
 
-var num = 10; // You can logg out variable too.
+console.log(makeCoffe(2, 20));
 
-console.log(num);
-
-console.log('string', 10.11, true, false, null, num); // You can output all of the above mentioned types, if you seperate them with a comma. 
+// If we mention parameters, or arguments, we know we're talking about invoking a function and/or function in General.
