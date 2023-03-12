@@ -1,30 +1,14 @@
-// Assignment Operators
-// All of the same precendence
+// Code Editors and Debugging
 
+// One needs seperate script file to seperate his/her concerns. 
 
-let number = 20;
+console.log("Hello World"); // You can log out string, number, boolean, primitive types like null and undefined
+console.log(200);
+console.log(true);
+console.log(undefined);
 
-number += 30; // 50. += adds to the initial value.
+var num = 10; // You can logg out variable too.
 
-number -= 30; // 20. -= subtracts to the initial value.
+console.log(num);
 
-number *= 2; // 40. multiplies initial value by the newly given number.
-
-number /= 4; // 10. divides initial value by the newly given number.
-
-number %= 4; // 2. gives what's left after the division. 10%4 = 2 (4+4+2).
-
-number **= 4; // 16. 2 to the power of 4 is 16.
-
-// Plus operator doesn't just deal with numbers, it also deals with strings
-
-let result = "Luka" + " Chochua"; // Joins the strings together.
-
-result = "Luka" + 10; // This is called polymorphism - an organism or inorganic object or material which takes various forms. 
-// Instead of addition, + assignment operator concatinates string with a number and converts it to the string data type.
-
-let name = "Luka";
-
-name += " Chochua";
-
-console.log(name);
+console.log('string', 10.11, true, false, null, num); // You can output all of the above mentioned types, if you seperate them with a comma. 
