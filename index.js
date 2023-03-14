@@ -1,71 +1,44 @@
-// Array Modification
+// Callable Objects
 
-let car = {
-    make: "Volvo",
-    speed: "160",
-    engine: {
-        size: 2.0,
-        make: "BMW",
-        fuel: "petrol",
-        pistons: [{maker: "BMW"}, {maker: "BMW2"}],
-    },
-    drive: function() { return "drive"}
-};
+// Functions are callable objects in the javascript. You can think of the braces {} as containing list of instructions. {} <- object literal. 
+// Functions are invokable.
 
+function name(fullName)
+{
+    return fullName(); // This is how we execute/call when parameter is a function. again, use braces ().
 
+    // return fullName.firstName + fullName.lastName; // We can send another object as an parameter to the function/invokable object. 
 
-let array = [
-    "string",
-    100, 
-    ["embed", 200],
-    { car: "ford" },
-    function() { return "drive"}
-];
+    /*
 
-/*
-array[0] = "string"; // to assign new value to the index of the array, you just need to reassign it like so.
+    function concat(name)
+    {
+        return "MR. " + name; 
+    } // You can embedd function inside of another one like this. 
 
-array[0] += " concat"; // of course, one also can concatinate new values to the existing string. 
+    return concat(fullName); // Returns "MR. Luka Chochua". We create parameter that will store the string (in this case) and delete after executing once. 
+    */
+} 
 
-array[5] = "new string"; // be careful while using brackets. If you don't know how many indexes there are, you might add undifined/null indexes
+console.log(
+    name(function(){ return "embed";})
+); // You don't have to define symbol name for the function in this case, as it's already defined as a variable. 
+// It will be given a name when it's invoked as a parameter. 
 
-array[20] = 2020; // Adds index of 20 and 14 empty ones after index 5 (that exists). 'empty x 14" in console. 
-
-array['test'] = "test";
-array.test2 = "test2"; // Don't do these kind of things, because array will start to function like an object and indexes can't be used anymore. 
-why is this bad? arrays are supposed to be countable/numerable. This way, array loses one of it's main charesteristics.
-
+console.log(name());
+/* console.log(
+    name({firstName:"Luka ", lastName: "Chochua"})
+); This object was invoked by the parentheses (), than argument was passed as a parameter and assigned. There we're accesssing new object and strings together 
 */
 
-// Length property. It tells us how many elements are in the array.
+// You can embedd objects inside of other objects. Example:
 
-array[5] = "new value"; // Now array has 6 elements. you can check length of an array with 'array.length'.
-// All of the objects have '__proto__', that javascript language created. It has all of the methods that can modify data in array. These are prebuild methods.
+// let obj = { embedded: [{}] } ; // You can do the same with the functions too, see above ^^
 
+/* obj = {
+    method: function() {},
+} // you can do the same in arrays too, but arrays don't have key-value pair. Just index and corresponding value.
+*/
 
-// Remove elements from the array
-
-array.shift(); // Use this when you want to get rid of the first element of the array.
-
-array.pop();  // Use this when you want to get rid of the last element of the array.
-
-
-// Add elements to the array
-
-array.unshift("string", 20, 20.22, function(){}, {}, []); // One can add any kind of element (primitive data, object or function) to the array like so.
-// This adds items right at the begining at the array. 
-
-array.push(200, 300, 'new value'); // One can add elements to the array like so. In both cases you can add one value, or as many values as you wish. 
-
-array.splice(2, 2); // First of you define which index you want to start splicing from (index 2 in this case), than define how many elements u want to splice (2). 
-
-array.splice(1, 0, "spliced string", 200, 20.31); // You write 0 in the predifined splice method as the second argument and add new elements after comma. 
-// We don't delete index '1' in this case, it just moves down and new elements are added in. 
-
-array.splice(2, 2, 'world200'); // In this case splice() method deletes two indexes of an array and adds a new one, or new ones from the index one
-// gives to the splice function as the first argument.  
-
-
-
-console.log(array); 
-
+// Recap - Functions are callable/invokable objects, that contain list of instructions. Objects can be contained inside objects, so callable objects
+// can be contained inside another callable object. It's call nesting. 
