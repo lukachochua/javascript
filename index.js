@@ -1,23 +1,37 @@
-// Memory Hoisting
+// Scope and Closures
 
-// Memory hoisting is a feature of a javscript. Hoist means to lift up - like a crane. 
+// When you think about scope - think about access. Car engine example. 
+// Each object has their own access level. 
 
-// While JIT compiler reads through the code, it looks for the syntax errors, also it's looking for var/const names and callable objects.
-// To lift them up - Hoist them. 
+var engine = {
+    maker: "Ford",
+    headGasket: {
+        pots: [
+            "piston1", // To access pots you need to go to the 'engine', use dot syntax and go to the 'headGasket'.'pots' and than use bracket syntax [0]. 
+            "piston2"
+        ]
+    }
+};
 
-console.log(myName, printName());
-
-var myName = "Luka"; // At this point JIT is just creating memory pointer and not a value. 
-
-function printName() 
+function runExpression() // Functions have their own scope/execution context, which are defined by curly braces. 
 {
-    console.log(a, embed()); // Curly brackets are also hoisted - execution code. Again, variable is created, but not defined. hence 'undefined'.
+    var a = 10;
 
-    var a = 100; // But if u delete variable all together, JS will give out error 'a isn't defined'. 
+    function add(b) {
 
-    function embed() {return 'Hello'}; // Each execution constext has it's own memory hoisting. 
+        return a + b; // You can't do this with regular object as callable objects are going through an 'execution stack'
+        // First you have runExpression(), later you got add(). They're both on stack. First it creates 'var a = 10', than 'add()' is executed and 
+        // addition is completed. result of the first functione xecution (runExpression) is saved in memory for it to be used later. 
+    }
 
-    return "John Doe"; // It's different for function. Execution gets hoisted. 
+    console.log(
+        add(90), // GC -  garbage collection. JS gets rid of waste symbols that we no longer need. .
+        // Not any other part of the application has access to the variables/symbols inside of this function. 
+        add(20)
+    ); // You can have same function executed over and over again as a stack - main thread is temporary memory. It's also called Outer execution Environment. 
+
+
+    // console.log(b); // This will not run, as 'b' isn't defined in the runExpression() function. it's definition is glued to the 'add()' function. 
+
 }
 
-// Than it goes back up again - myName exists, but isnt' referencing anything, whilst printName()-> is fully executed.
