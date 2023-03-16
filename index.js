@@ -1,44 +1,23 @@
-// Callable Objects
+// Memory Hoisting
 
-// Functions are callable objects in the javascript. You can think of the braces {} as containing list of instructions. {} <- object literal. 
-// Functions are invokable.
+// Memory hoisting is a feature of a javscript. Hoist means to lift up - like a crane. 
 
-function name(fullName)
+// While JIT compiler reads through the code, it looks for the syntax errors, also it's looking for var/const names and callable objects.
+// To lift them up - Hoist them. 
+
+console.log(myName, printName());
+
+var myName = "Luka"; // At this point JIT is just creating memory pointer and not a value. 
+
+function printName() 
 {
-    return fullName(); // This is how we execute/call when parameter is a function. again, use braces ().
+    console.log(a, embed()); // Curly brackets are also hoisted - execution code. Again, variable is created, but not defined. hence 'undefined'.
 
-    // return fullName.firstName + fullName.lastName; // We can send another object as an parameter to the function/invokable object. 
+    var a = 100; // But if u delete variable all together, JS will give out error 'a isn't defined'. 
 
-    /*
+    function embed() {return 'Hello'}; // Each execution constext has it's own memory hoisting. 
 
-    function concat(name)
-    {
-        return "MR. " + name; 
-    } // You can embedd function inside of another one like this. 
+    return "John Doe"; // It's different for function. Execution gets hoisted. 
+}
 
-    return concat(fullName); // Returns "MR. Luka Chochua". We create parameter that will store the string (in this case) and delete after executing once. 
-    */
-} 
-
-console.log(
-    name(function(){ return "embed";})
-); // You don't have to define symbol name for the function in this case, as it's already defined as a variable. 
-// It will be given a name when it's invoked as a parameter. 
-
-console.log(name());
-/* console.log(
-    name({firstName:"Luka ", lastName: "Chochua"})
-); This object was invoked by the parentheses (), than argument was passed as a parameter and assigned. There we're accesssing new object and strings together 
-*/
-
-// You can embedd objects inside of other objects. Example:
-
-// let obj = { embedded: [{}] } ; // You can do the same with the functions too, see above ^^
-
-/* obj = {
-    method: function() {},
-} // you can do the same in arrays too, but arrays don't have key-value pair. Just index and corresponding value.
-*/
-
-// Recap - Functions are callable/invokable objects, that contain list of instructions. Objects can be contained inside objects, so callable objects
-// can be contained inside another callable object. It's call nesting. 
+// Than it goes back up again - myName exists, but isnt' referencing anything, whilst printName()-> is fully executed.
