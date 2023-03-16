@@ -1,11 +1,11 @@
-// Scope and Closures
-
-// When you think about scope - think about access. Car engine example. 
-// Each object has their own access level. 
+// Inferred Globals & Scope
+// Window object in JS is highest level object. All of the symbols/functions are of Global Scope. 
+// Only objects that are directly accessable from window object have global scope/are accessible from anywhere. 
 
 var engine = {
     maker: "Ford",
     headGasket: {
+        maker: 'Golf',
         pots: [
             "piston1", // To access pots you need to go to the 'engine', use dot syntax and go to the 'headGasket'.'pots' and than use bracket syntax [0]. 
             "piston2"
@@ -17,21 +17,22 @@ function runExpression() // Functions have their own scope/execution context, wh
 {
     var a = 10;
 
-    function add(b) {
+    function add() {
+        var engine = "engine"; // if we create variable called engine inside of the FIRST inferred scope, it's value will be returned. 
+        // But engine object is still available on global scope. To be blunt - each one of the braces has it's scope. 
 
-        return a + b; // You can't do this with regular object as callable objects are going through an 'execution stack'
-        // First you have runExpression(), later you got add(). They're both on stack. First it creates 'var a = 10', than 'add()' is executed and 
-        // addition is completed. result of the first functione xecution (runExpression) is saved in memory for it to be used later. 
+        // engine = "New String"; This way because of the assignment operator, it assigns new value to the global scoped variable 'engine'. 
+        // You need to be careful with it during coding. To create variable within a scope you need to use 'var', 'let', or 'const' declarations. 
+        test = "New String";  // because we use assignment operator, 'test' still has memory pointer on the window object, despite
+        // not being explicitly declared as a variable. This is called clubbering a global variables and is bad practice. which is unnecessary. 
+
+        test; // without assignment operator JS will return an error as it can't find tests value. 
+        
+        console.log(engine); // JS is trying to deduce where the memory pointer 'engine' is. first it goes to the curly brackets
+        // inside of the add() function and searches for it there, than in 'runExpression()' and only than in Global/Window Scope. 
     }
 
-    console.log(
-        add(90), // GC -  garbage collection. JS gets rid of waste symbols that we no longer need. .
-        // Not any other part of the application has access to the variables/symbols inside of this function. 
-        add(20)
-    ); // You can have same function executed over and over again as a stack - main thread is temporary memory. It's also called Outer execution Environment. 
-
-
-    // console.log(b); // This will not run, as 'b' isn't defined in the runExpression() function. it's definition is glued to the 'add()' function. 
+    add();
 
 }
 
