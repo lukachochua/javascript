@@ -1,24 +1,21 @@
-// Prototypes
+// Constructors with prototype
 
-// Prototypes are unique to JS - they're shared objects. They're objects that have properties and methods that can be accessed by a range of different objects.
-
-function Apple(color, weight)
-{
+function Apple(color, weight) {
     this.color = color,
     this.weight = weight
-}
-
+    /*
+    this.eat = function () { return 'eat the apple'; };
+    this.throw = function () { return "throw the apple"; }; // This way we have copies of these methods for each of the objects iterations, which cloggs memory. 
+    */
+} // You should only modify prototype objects on the constructor functions themselves. 
 
 Apple.prototype = {
-    eat() {return this}, 
-    throw(){},
-}
+    eat: function () { return this; }, // This context will be pointing to the Apple object, not the prototype. 
+    throw: function () { return "throw the apple"; } // We have a dedicated place to change how methods behave. 
+}; // Any property/method will be shared throught all the iterations of the object. 
 
+var apple1 = new Apple('red', 99);
+var apple2 = new Apple('green', 109);
+var apple3 = new Apple("yellow", 299);
 
-var Apple1 = new Apple('red', 10);
-
-console.log(Apple1.eat()); // Console returns 'this' iteration of the object, using eat() function in the prototype. with according values. 
-
-
-// Using prototype, each of the 'new' object can use prototype functions as they're linked to the prototype that includes those methods. 
-// This saves a lot of memory to make sure to have one copy of the verb/method. 
+// If you modify apple1 (specific iteration of object), and write 'eat' key, it'll not go to the prototype to invoke it method. Avoid symbol name colisions. 
