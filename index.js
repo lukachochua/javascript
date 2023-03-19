@@ -1,29 +1,37 @@
-// For and For In loops
+// Let ES6 - ECMASCRIPT 6 
+
+/*
+var symbolName = "value reference in memory";
+
+let letSymbol = "scoped value"; // Let has more respect for scope. You can assign new values. 
 
 
-let classRegister = ["Luka", "Ano", "Nikala", "Nini"];
+const symName = "constant value in memory"; // Once set, can not change the value. 
+*/
 
-// Increment
+if (true)
+{
+    var symbolName = "value reference in memory"; // Console allows to reach it's value, despite it's scope not being 'window object'
+    // So var attaches each created variable to the window object, which is very bad as it slows down machines.
+    // One can check the variable in console with 'window.symbolName' too.
 
+    let letSymbol = "scoped value"; // Let symbol is defined within this scope {} and it respects this block. 
 
-for (let i=0; i < classRegister.length; i++) { // This is for loop. Syntacticlly it looks very simmilar to the if() condition.
-    // index      condition           index++
-
-    // If() is singular, for() condition is plural. it's running execution context multiple times. 
-    console.log(classRegister[i]); // We can use variable 'i' in the execution context of the for loop.
-} // When statement in the condition is false (i.e. i is equal to the array lenght in this case) for() loop stops.
-
-// Deincrement
-
-// Classregister array length is 4. minus 1 = 3 and it'll start from last item of the array, which in this case is "Nini".
-
-for(let i = classRegister.length-1; i >= 0; i--) {
-    console.log(classRegister[i]); // This gives inverted list.
+    const symName = "constant value in memory"; // Constants respect the scope too. 
 }
 
+for(let i=0; i<5; i++) // 'var i' is defined on a 'window object' and it's value is accessable trough console. I don't need this symbol globally accessasble
+// if you use 'let i' it'll not be accessable from the console. 
+{
+    var symbolName = "value reference in memory"; 
 
-// For in loop
+    let letSymbol = "scoped value"; 
 
-for(var index in classRegister) { // No need for assignment operator. We're looking for the indexes in the classRegister/given array.
-    console.log(classRegister[index]); // For in loop is incrementation. It's the same as for loop with increment (first example).
+    const symName = "constant value in memory"; 
+    // Last two are private for this execution context. 
+}
+
+function check()
+{
+    var varSymbol = "assign a value"; // 'var' only respects functions execution context. Wherever you can, you should use 'let'. 
 }
