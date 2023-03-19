@@ -1,18 +1,29 @@
-// If Statements
+// For and For In loops
 
-var carsLeft = 1,
-    carsRight = 0,
-    greenMan = "no";
 
-if (greenMan === "yes") { // We write condition in the parenthisis and use braces to define execution context. 
-    console.log("Cross the road"); // if false statement - condition not met and script not executed. 
-} else if (greenMan === 'yes' && (carsLeft === 0 || carsRight === 0)) { // Ability to chain multiple comparison conditions with "&&" (and) or "||" (or) operators.
-    // false as 1 car left &&    true. in case of "||" operator, this will be truthy statement - as long as one of those sides are true.
-    // Whatever ius inside parenthesis will be executed first as it grouping operator takes precendence over every other.
-    console.log("All clear! Cross the road"); // In "else if"-s case, if first execution context isn't truthy, compiler goes on to check others. 
-    // you can keep adding as many "else if"-s as you want.
-} else {
-    console.log("Stay where you are!"); // "else" doesn't need condition.
+let classRegister = ["Luka", "Ano", "Nikala", "Nini"];
+
+// Increment
+
+
+for (let i=0; i < classRegister.length; i++) { // This is for loop. Syntacticlly it looks very simmilar to the if() condition.
+    // index      condition           index++
+
+    // If() is singular, for() condition is plural. it's running execution context multiple times. 
+    console.log(classRegister[i]); // We can use variable 'i' in the execution context of the for loop.
+} // When statement in the condition is false (i.e. i is equal to the array lenght in this case) for() loop stops.
+
+// Deincrement
+
+// Classregister array length is 4. minus 1 = 3 and it'll start from last item of the array, which in this case is "Nini".
+
+for(let i = classRegister.length-1; i >= 0; i--) {
+    console.log(classRegister[i]); // This gives inverted list.
 }
 
-// "else if" and "else" part of the code won't be executed if initial condision is met/true. 
+
+// For in loop
+
+for(var index in classRegister) { // No need for assignment operator. We're looking for the indexes in the classRegister/given array.
+    console.log(classRegister[index]); // For in loop is incrementation. It's the same as for loop with increment (first example).
+}
