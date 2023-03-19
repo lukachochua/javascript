@@ -1,21 +1,25 @@
-// Constructors with prototype
+// Comparison Operators
 
-function Apple(color, weight) {
-    this.color = color,
-    this.weight = weight
-    /*
-    this.eat = function () { return 'eat the apple'; };
-    this.throw = function () { return "throw the apple"; }; // This way we have copies of these methods for each of the objects iterations, which cloggs memory. 
-    */
-} // You should only modify prototype objects on the constructor functions themselves. 
+// Crossroads - look right, check for cars, look left, check for cars. IF those statements are true, you cross the road.
 
-Apple.prototype = {
-    eat: function () { return this; }, // This context will be pointing to the Apple object, not the prototype. 
-    throw: function () { return "throw the apple"; } // We have a dedicated place to change how methods behave. 
-}; // Any property/method will be shared throught all the iterations of the object. 
+//Equals operator
+'hello' == 'Hello'; // returns false, cuz it's case sensitive.
+null == undefined; // returns true. theyy both mean same kind of thing and they polymorph. 
+NaN; // Doesn't compare. Never use NaN with comparison operators. 
 
-var apple1 = new Apple('red', 99);
-var apple2 = new Apple('green', 109);
-var apple3 = new Apple("yellow", 299);
+// Double and triple Equals operators
+10 == '10'; // Returns true - string data type takes precendence in this '==' case. to prevent this happenening we use:
+null === undefined; // returns false. cuz they're different type of data types. This is strict comparison, so no polymorphism here. 
 
-// If you modify apple1 (specific iteration of object), and write 'eat' key, it'll not go to the prototype to invoke it method. Avoid symbol name colisions. 
+// Is not operator
+null != null; // answer is false - they're not different.
+
+10 != '10'; // returns false - they're equal in this case - polymorphism happening. to prevent this we need to:
+10 !== '10'; // now it returns true, as strict comparison takes datatypes in consideration.  same with 'null' and 'undefined'.
+
+// Greater than/less than operators
+
+10 > 100; // false - as ten isn't greater hundred. can use it with strings. longer string is greater than shorter. capital letters ruin this logic. 
+10 >= 10; // ofc returns true. greater than or equals operator.
+10 < 100; // true ofc. can use <= operator too. Don't recommend to use them with strings.
+
