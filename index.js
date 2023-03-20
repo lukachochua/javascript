@@ -1,37 +1,10 @@
-// Let ES6 - ECMASCRIPT 6 
+// Undestanding the Document Object Model (DOM)
 
-/*
-var symbolName = "value reference in memory";
+// DOM is the way of interacting and communicating with the objects. HTML document is like a tree. We have an object that represents it. 
 
-let letSymbol = "scoped value"; // Let has more respect for scope. You can assign new values. 
+// The document object model is where we have document that's represented by objects and it's modeled upon how you developed your HTML file. 
+// It's not actual visual, but an object representation of it. 
 
-
-const symName = "constant value in memory"; // Once set, can not change the value. 
-*/
-
-if (true)
-{
-    var symbolName = "value reference in memory"; // Console allows to reach it's value, despite it's scope not being 'window object'
-    // So var attaches each created variable to the window object, which is very bad as it slows down machines.
-    // One can check the variable in console with 'window.symbolName' too.
-
-    let letSymbol = "scoped value"; // Let symbol is defined within this scope {} and it respects this block. 
-
-    const symName = "constant value in memory"; // Constants respect the scope too. 
-}
-
-for(let i=0; i<5; i++) // 'var i' is defined on a 'window object' and it's value is accessable trough console. I don't need this symbol globally accessasble
-// if you use 'let i' it'll not be accessable from the console. 
-{
-    var symbolName = "value reference in memory"; 
-
-    let letSymbol = "scoped value"; 
-
-    const symName = "constant value in memory"; 
-    // Last two are private for this execution context. 
-}
-
-function check()
-{
-    var varSymbol = "assign a value"; // 'var' only respects functions execution context. Wherever you can, you should use 'let'. 
-}
+console.log(document.childNodes[1].childNodes[2]); // this returns 'body' element, but this way isn't convenient. We'll learn more about DOM
+// manipulation in the next lesson. Access DOM via css selectors, classes and ID. If you start changing around nodes it'll get confusing real fast as
+// indexes of the elements often change after some tuning. We use css selectors and target specific elements to style them. 
