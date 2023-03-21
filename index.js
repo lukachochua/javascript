@@ -1,25 +1,30 @@
-// Changing Elements Style
+// Event Handlers
 
-var el = document.getElementById('style'); // First you target the element. Than we target elements 'style' property/object. 
-// That object contains many properties resembling css properties and than we assign values as in CSS properties. 
+// Events are when something happens in our application and we want to run set of instructions/subroutines. Touch screen, press button etc.
 
-/*
-el.style.background = "blue"; // This is an object in the Document Object Model. it has a lot of properties that allow us to modify css. 
-// background is just one of them. Here we need quotation marks - we don't need variable blue, but string blue.
-el.style.color = "white";
-el.style.width = "200px"; // You need to include measurment unit like "px".
-*/ 
+let select = document.getElementsByName('cars')[0]; // This returns an array and we want to access element on the 0 index of an array.
 
-/*
 
-el.style.cssText = "background: blue; color:white; width:200px"; // This is a better and more efficient way to style html element
-el.style.cssText += "height:100px;"; // You can also concatinate styles not to lose existing ones.
-// csstext is basically applied to the style attribute.
+select.onclick = function(event) { // populate with param 'event' as a first param. It assigns assigns event object, that gives details about event that's triggered.
+// You just need to give param a name to reference it as an object during certain operations. 
+    console.log(event);
+}; // This is called callback function. All such functions are associated with an event. Functions in an JS file overwrite ones in html. 
 
-*/
+select.addEventListener('click', function(event) { // This functions will ALWAYS recieve event objects.
+    console.log('clicked by add event listener');
+}); // 'on' is namespace, we don't need it here. 
+// This is not an inline event, you'll not see this function on the object itself. It's going to be defined by JIT compiler.
 
-// To get existing style from the <style> tag, you can use 
+// If you want to remove event listener using functions symbol name, you need to name callback functions like so. 
+function clickCallBack() {
+    console.log('clicked by add event listener');
+}
 
-console.log(getComputedStyle(el)); // property.
+select.addEventListener('click', clickCallBack); // provide 'symbol name' - function name.
 
-// Computed properties are default, they're not actual styles applied from JS. 
+
+select.removeEventListener('click', clickCallBack); // same syntax here. 
+
+// To add event listeners, you must target the element itself, than you have to choose specific event (i.e. onclick). And than you can add callback callback
+// function, that has 'event'/'e' as a parameter. They all recieve event object, this symbol name is automatically referencing symbol name that's defined in the 
+// JIT compiler and you can add use addEventListener and have multiple callback functions on a single event. 
