@@ -4,16 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <style>
+        #style 
+        {
+            background: blue;
+            color:white;
+        }
+    </style> 
+    CSS syntax also includes an object and it has a key value pair -->
+
+    <style>
+        #style 
+        {
+            background-color: blue !important; 
+            /* if important - JS can't restyle it. */
+            color:white;
+            width:100px;
+            height:100px;
+        }
+    </style>
     <title>Javascript Essentials</title>
   </head>
   <body>
-    <p id="hello">Hello World</p>
-    <p class="pClass">123</p>
-    <p data-content="123">321</p>
-    <h1 class="pClass">
-      Javascript Essentials
-      <span>Hello</span>
-    </h1>
+    <h1 id="style">Style Me!!</h1>
 
     <script src="index.js"></script>
   </body>
