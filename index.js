@@ -1,30 +1,25 @@
-// Targeting DOM elements
+// Changing Elements Contents
 
-// We have several methods that come with document (document is the global variable) to target elements. 
-// You can targets elements by their tagnames too.  NS means namespaced. 
+// If you have large JS file at the end of HTML content (last part of body), not to ruin websites load time.
+// It also means that script is ready to modify all of the HTML elements. 
+
+var pHello = document.getElementById("hello"); // Not a new object, just a memory pointer to an existing object created in the Document Object.
+
+// You can name 'getElement' and save it to the memory pointer a.k.a. variable.
+
+pHello.innerText = "New World"; // innerText contain no HTML whatsoever.
+pHello.innerHTML += " <b> Order</b>"; // While using innerHTML one can change HTML too. 
+pHello.outerHTML = '<h2 id="hello">New World Order <span>Hello World</span></h2>' // There is also outerHTML function that gives us an html of the parent element. <p></p> in this case.
+
+/*
+document.getElementById("hello").innerText += " Order"; // Used in console returns 'New World Order' on the browser
+First part returns an object, after the second '.' it's accessing an object. 
+*/
 
 
-// Get tags
-console.log(document.getElementsByTagName('p')); // You don't include angled brackets. 
-// You target all of the paragraph elements like this and can modify 'em. 
-// When you got "getElements" <- always returns array, even if we have one tag in the html file. 
+var spanH1 = document.querySelectorAll('h1 span');//[0]  querySelectorAll() always returns an array and html part of the element is always [0] index.
 
-// Sometimes you want to target something specific, not all paragraph, or h1 tags. 
-console.log(document.getElementById('hello')); // This is how you get an element by it's id.
-console.log(document.getElementsByClassName("pClass")); // This is how you get an element by it's class name. Again, plural = array.
+spanH1[0].innerHTML = "new text here!!"; // You can manipulate array at this part too.
 
-// CSS Selectors.
-
-console.log(document.querySelectorAll('#hello')); // You use css selectors to target specific element. # for id and etc. "All" guarantees and array. 
-// This is how you select element via ID.
-
-console.log(document.querySelectorAll('.pClass')); // This is how you target an element via class. 
-
-// You can combine them too.
-
-console.log(document.querySelectorAll('#hello, .pClass')); // This targets both - by an ID and class.
-
-// Advanced selectors
-
-console.log(document.querySelectorAll('p[data-content="123"], body >  h1.pClass > span')); // use single quotes on the outter edge and double quotes inside. 
-// > in this case shows us which one is the parent element. body>h1 - etc. if you remove class, second part of the selector will no longer works.
+// When we say document.getElementsByTagName and get all paragraph elements,  You're getting memory pointers to the object in the document model. 
+// Not a new model, just a way to reference existing model. 
